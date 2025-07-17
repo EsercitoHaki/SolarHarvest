@@ -2,51 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : IPlayerState
+public class PlayerMoveState : PlayerState
 {
-    private PlayerAnimationController _context;
-    private Vector2 _currentMoveInput;
-
-    public PlayerMoveState(PlayerAnimationController context)
+    public PlayerMoveState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
-        _context = context;
     }
 
-    public void EnterState(PlayerAnimationController playerAnimationController)
+    public override void Enter()
     {
-        _context = playerAnimationController;
-
-        Debug.Log("Entering Idle State");
-        _context.SetAnimatorBool("IsMoving", true);
+        base.Enter();
     }
 
-    public void UpdateState()
+    public override void Update()
     {
-        _context.SetAnimatorFloat("MoveX", _currentMoveInput.x);
-        _context.SetAnimatorFloat("MoveY", _currentMoveInput.y);
+        base.Update();
 
-        if (_currentMoveInput.magnitude > 0.01f)
+        if (leftMouse)
         {
-            _context.LastMoveDirection = _currentMoveInput.normalized;
+            stateMachine.ChangeState(player.hoeState);
+            return;
         }
 
-        if (_context.LastMoveDirection.x > 0.01f)
+        player.SetVelocity(xInput * player.moveSpeed, yInput * player.moveSpeed);
+
+        if (xInput == 0 && yInput == 0)
         {
-            _context.SetSpriteFlipX(false);
-        }
-        else if (_context.LastMoveDirection.x < -0.01f)
-        {
-            _context.SetSpriteFlipX(true);
+            stateMachine.ChangeState(player.idleState);
         }
     }
 
-    public void ExitState()
+    public override void Exit()
     {
-        Debug.Log("Exit");
+        base.Exit();
     }
 
-    public void SetMoveInput(Vector2 input)
-    {
-        _currentMoveInput = input;
-    }
 }

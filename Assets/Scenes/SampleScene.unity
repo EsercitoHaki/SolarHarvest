@@ -225,8 +225,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1391480497}
   - component: {fileID: 1391480498}
-  - component: {fileID: 1391480499}
   - component: {fileID: 1391480500}
+  - component: {fileID: 1391480501}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -301,33 +301,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1391480499
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391480496}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &1391480500
 Animator:
   serializedVersion: 5
@@ -349,6 +322,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1391480501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391480496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1882e080c9fb2644988366cfd4b977b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1837267742
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,10 +343,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837267743}
-  - component: {fileID: 1837267744}
-  - component: {fileID: 1837267747}
-  - component: {fileID: 1837267746}
   - component: {fileID: 1837267745}
+  - component: {fileID: 1837267744}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -394,43 +377,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837267742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27fccb1dbb2dd95429e992410ace3a4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ceff67522490c34c873ec3b138aecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1837267745
-MonoBehaviour:
+  moveSpeed: 3
+--- !u!50 &1837267745
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837267742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f545d481dfe2b754ea7d9087193fc4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1837267746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837267742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f311ef72d3f51b49b88e11adb7dfd5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1837267747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837267742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea19cdefaae06ba469f03b8e2b7d224f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

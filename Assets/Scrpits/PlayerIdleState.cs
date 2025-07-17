@@ -1,41 +1,34 @@
 using UnityEngine;
 
-public class PlayerIdleState : IPlayerState
+public class PlayerIdleState : PlayerState
 {
-    private PlayerAnimationController _context;
-
-    public PlayerIdleState(PlayerAnimationController context)
+    public PlayerIdleState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
-        _context = context;
     }
 
-    public void EnterState(PlayerAnimationController playerAnimationController)
+    public override void Enter()
     {
-        _context = playerAnimationController;
+        base.Enter();
+    }
 
-        Debug.Log("Entering Idle State");
-        _context.SetAnimatorBool("IsMoving", false);
-        _context.SetAnimatorFloat("LastMoveX", _context.LastMoveDirection.x);
-        _context.SetAnimatorFloat("LastMoveY", _context.LastMoveDirection.y);
+    public override void Update()
+    {
+        base.Update();
 
-        if (_context.LastMoveDirection.x > 0.01f)
+        if (leftMouse)
         {
-            _context.SetSpriteFlipX(false);
+            stateMachine.ChangeState(player.hoeState);
+            return;
         }
-        else if (_context.LastMoveDirection.x < -0.01f)
+
+        if (xInput != 0 || yInput != 0)
         {
-            _context.SetSpriteFlipX(true);
+            stateMachine.ChangeState(player.moveState);
         }
     }
 
-    public void UpdateState()
+    public override void Exit()
     {
-        
+        base.Exit();
     }
-    
-    public void ExitState()
-    {
-        Debug.Log("Exit");
-    }
-
 }
